@@ -15,6 +15,7 @@ const output ={
     },
 }
 
+//로그인 인증 process
 const process={
     login:(req,res)=>{
         const id =req.body.id;
