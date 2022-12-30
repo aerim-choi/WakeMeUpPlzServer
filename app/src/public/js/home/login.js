@@ -27,6 +27,7 @@ function login(){
         }
     })
     .catch((err)=>{
+        console.log(err);
         console.error("로그인 중 에러 발생");
     });
 }
