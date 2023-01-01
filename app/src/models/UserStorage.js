@@ -1,56 +1,32 @@
 "use strict"
-
-const fs = require("fs").promises;
-
+const db=require("../config/db");
+/*
+UserStorage에서는 DB를 CRUD(생성,읽기,수정,삭제)역할
+*/
 class UserStorage {
-    static #getUserInfo(data, id) {
-        const users = JSON.parse(data);
-        const idx = users.id.indexOf(id);
-        const usersKeys = Object.keys(users); //=>[id, psword, name]
-        const userInfo = usersKeys.reduce((newUser, info) => {
-            newUser[info] = users[info][idx];
-            return newUser;
-        }, {});
-        return userInfo;
-    }
-    static #getUsers(data, isALL, fields) {
-        const users = JSON.parse(data);
-        if (isALL) return users;
-        const newUsers = fields.reduce((newUsers, field) => {
-            if (users.hasOwnProperty(field)) {
-                newUsers[field] = users[field];
-            }
-            return newUsers;
-        }, {});
-        return newUsers;
-    }
-    static getUsers(isALL, ...fields) {
-        return fs.readFile("./src/databases/users.json")
-            .then((data) => {
-                return this.#getUsers(data, isALL, fields);
-            })
-            .catch((err) => console.error);
-    }
 
     static getUserInfo(id) {
-        return fs.readFile("./src/databases/users.json")
-            .then((data) => {
-                return this.#getUserInfo(data, id);
-            })
-            .catch((err) => console.error);
+        return new Promise((resolve,reject)=>{
+            const query = "SELECT * FROM users WHERE id =?;";
+            db.query(query,[id],(err,data)=>{
+                if(err)reject(`${err}`);
+                console.log(data[0]);
+                resolve(data[0]);
+            });
+        });
+        
     }
 
     static async save(userInfo) {
-        const users = await this.getUsers(true);
-        if (users.id.includes(userInfo.id)) {
-            throw "이미 존재하는 아이디입니다.";
-        }
-        users.id.push(userInfo.id);
-        users.name.push(userInfo.name);
-        users.psword.push(userInfo.psword);
-        //데이터 추가 
-        fs.writeFile("./src/databases/users.json", JSON.stringify(users));
-        return { success: true }
+        return new Promise((resolve,reject)=>{
+            const query = "INSERT INTO users(id,name,psword) VALUES(?,?,?);" ;
+            db.query(query,
+                [userInfo.id,userInfo.name,userInfo.psword],
+                (err)=>{
+                if(err)reject(`${err}`);
+                resolve ({sucess:true});
+            });
+        });
     }
 
 }

@@ -1,5 +1,7 @@
 "use strict";
-
+/*
+User은 해당 데이터를 가지고 검증 및 조작하는 역할
+*/
 const UserStorage=require("./UserStorage");
 class User{
     constructor(body){
@@ -8,7 +10,8 @@ class User{
 
     async login(){
         const client =this.body
-        console.log(`login => client : ${client.id},${client.psword}`);
+        
+        try{
         const {id,psword}= await UserStorage.getUserInfo(client.id);
         if(id){
             if(id===client.id && psword ===  client.psword){
@@ -17,7 +20,9 @@ class User{
             return {success:false,msg:"비밀번호가 틀렸습니다."};
         }
         return {success:false,msg:"존재하지 않는 아이디입니다."};
-        
+        }catch(err){
+            return {success:false,msg:err};
+        }
     }
     async register(){
         const client = this.body;
