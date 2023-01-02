@@ -21,7 +21,7 @@ class AlarmStorage {
         return new Promise((resolve,reject)=>{
             const query = "INSERT INTO alarms(alarmNum,alarmTime, alarmDay,title,sound,helper,id) VALUES(?,?,?,?,?,?,?);" ;
             db.query(query,
-                [alarmInfo.alarmNum,alarmInfo.Time,alarmInfo.Day,alarmInfo.title,alarmInfo.sound,alarmInfo.helper,alarmInfo.id],
+                [alarmInfo.alarmNum,alarmInfo.alarmTime,alarmInfo.alarmDay,alarmInfo.title,alarmInfo.sound,alarmInfo.helper,alarmInfo.id],
                 (err)=>{
                 if(err)reject(`${err}`);
                 resolve ({sucess:true});
