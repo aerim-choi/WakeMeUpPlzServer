@@ -10,8 +10,8 @@ class AlarmStorage {
             const query = "SELECT * FROM alarms WHERE id =?;";
             db.query(query,[id],(err,data)=>{
                 if(err)reject(`${err}`);
-                console.log(data[0]);
-                resolve(data[0]);
+                console.log(data);
+                resolve(data);
             });
         });
         
