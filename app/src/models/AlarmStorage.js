@@ -33,7 +33,7 @@ class AlarmStorage {
             const query = "INSERT INTO alarms(alarmNum,title, helper,dorN,isActivated,isHelperActivated,ringTone,alarmTime,id,dates) VALUES(?,?,?,?,?,?,?,?,?,?);" ;
             
             db.query(query,
-                [alarmInfo.alarmNum,alarmInfo.title,alarmInfo.helper,alarmInfo.dorN,alarmInfo.isActivited,alarmInfo.isHelperActivated,alarmInfo.ringTone,alarmInfo.alarmTime,alarmInfo.id,alarmInfo.dates],
+                [alarmInfo.alarmNum,alarmInfo.title,alarmInfo.helper,alarmInfo.dorN,alarmInfo.isActivated,alarmInfo.isHelperActivated,alarmInfo.ringTone,alarmInfo.alarmTime,alarmInfo.id,alarmInfo.dates],
                 (err)=>{
                 if(err)reject(`${err}`);
                 resolve({sucess:true});
