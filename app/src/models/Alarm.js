@@ -14,7 +14,7 @@ class Alarm{
         const client =this.body
         try{
             if(await UserStorage.getUserInfo(client.id)){
-                const fields=  AlarmStorage.getAlarmInfo(client.id);     
+                const fields=  await AlarmStorage.getAlarmInfo(client.id);     
                 const id=fields[0].id;
                 if(id===client.id){
                     return {success : true,result:fields };
