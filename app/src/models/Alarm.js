@@ -14,7 +14,7 @@ class Alarm{
         const client =this.body
         try{
             if(await UserStorage.getUserInfo(client.id)){
-                const fields= await AlarmStorage.getAlarmInfo(client.id);     
+                const fields=  await AlarmStorage.getAlarmInfo(client.id);     
                 const id=fields[0].id;
                 if(id===client.id){
                     return {success : true,result:fields };
@@ -31,6 +31,24 @@ class Alarm{
         const client = this.body;
         try{
             const response = await AlarmStorage.alarmSave(client);
+            return response;
+        }catch(err){
+            return {success : false, msg:err};
+        }
+    }
+    async updateAlarm(){
+        const client =this.body;
+        try{
+            const response = await AlarmStorage.alarmUpdate(client);
+            return response;
+        }catch(err){
+            return {success : false, msg:err};
+        }
+    }
+    async deleteAlarm(){
+        const client =this.body;
+        try{
+            const response = await AlarmStorage.alarmDelete(client);
             return response;
         }catch(err){
             return {success : false, msg:err};
