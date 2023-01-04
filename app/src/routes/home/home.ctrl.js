@@ -6,20 +6,24 @@ const output ={
     home : (req,res)=>{
         res.render("home/index");
     },
-    
     login : (req,res)=>{
         res.render("home/login");
     },
     register:(req,res)=>{
         res.render("home/register");
     },
-
     alarm:(req,res)=>{
         res.render("home/alarm");
     },
     alarmRegister:(req,res)=>{
         res.render("home/alarmRegister");
-    }
+    },
+    alarmUpdate:(req,res)=>{
+        res.render("home/alarmUpdate");
+    },
+    alarmDelete:(req,res)=>{
+        res.render("home/alarmDelete");
+    },
 }
 
 
@@ -42,6 +46,17 @@ const process={
     addAlarm:async(req,res)=>{
         const alarm= new Alarm(req.body);
         const response=await alarm.addAlarm();
+        return res.json(response);
+    },
+    updateAlarm:async(req,res)=>{
+        const alarm= new Alarm(req.body);
+        const response=await alarm.updateAlarm();
+        return res.json(response);
+    }
+    ,
+    deleteAlarm:async(req,res)=>{
+        const alarm= new Alarm(req.body);
+        const response=await alarm.deleteAlarm();
         return res.json(response);
     }
 

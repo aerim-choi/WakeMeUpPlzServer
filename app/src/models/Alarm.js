@@ -36,6 +36,15 @@ class Alarm{
             return {success : false, msg:err};
         }
     }
+    async deleteAlarm(){
+        const client =this.body;
+        try{
+            const response = await AlarmStorage.alarmDelete(client);
+            return response;
+        }catch(err){
+            return {success : false, msg:err};
+        }
+    }
 
 
 }

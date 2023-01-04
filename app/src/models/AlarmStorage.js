@@ -5,7 +5,7 @@ const db=require("../config/db");
 AlarmStorage에서는 DB를 CRUD(생성,읽기,수정,삭제)역할
 */
 class AlarmStorage {
-    static dataList;
+    
     static async getDaysInfo(element){
         const query = "select Sun,Mon,Tue,Wed,Thur,Fri,Sat from dates  where alarmNum=?;";
     
@@ -34,6 +34,34 @@ class AlarmStorage {
             
             db.query(query,
                 [alarmInfo.alarmNum,alarmInfo.title,alarmInfo.helper,alarmInfo.dorN,alarmInfo.isActivated,alarmInfo.isHelperActivated,alarmInfo.ringTone,alarmInfo.alarmTime,alarmInfo.id,alarmInfo.dates],
+                (err)=>{
+                if(err)reject(`${err}`);
+                resolve({sucess:true});
+            });
+            
+        });
+    }
+
+    static async alarmUpdate(alarmInfo){
+        return new Promise((resolve,reject)=>{
+            const query = "UPDATE alarms SET alarmNum=?,title=?, helper=?,dorN=?,isActivated=?,isHelperActivated=?,ringTone=?,alarmTime=?,id=?,dates=?) ;" ;
+            
+            db.query(query,
+                [alarmInfo.alarmNum,alarmInfo.title,alarmInfo.helper,alarmInfo.dorN,alarmInfo.isActivated,alarmInfo.isHelperActivated,alarmInfo.ringTone,alarmInfo.alarmTime,alarmInfo.id,alarmInfo.dates],
+                (err)=>{
+                if(err)reject(`${err}`);
+                resolve({sucess:true});
+            });
+            
+        });
+    }
+
+    static async alarmDelete(alarmInfo){
+        return new Promise((resolve,reject)=>{
+            const query = "DELETE FROM alarms where id=? and alarmNum=?;" ;
+            
+            db.query(query,
+                [alarmInfo.alarmNum,alarmInfo.id],
                 (err)=>{
                 if(err)reject(`${err}`);
                 resolve({sucess:true});
