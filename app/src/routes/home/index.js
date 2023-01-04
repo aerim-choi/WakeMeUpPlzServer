@@ -18,8 +18,8 @@ router.post("/login",ctrl.process.login);
 router.post("/register",ctrl.process.register);
 router.post("/alarm",ctrl.process.getAlarm);
 router.post("/alarmRegister",ctrl.process.addAlarm);
-router.post("/alarmUpdate",ctrl.process.updateAlarm);
-router.post("/alarmDelete",ctrl.process.deleteAlarm);
+router.put("/alarmUpdate",ctrl.process.updateAlarm);
+router.delete("/alarmDelete",ctrl.process.deleteAlarm);
 
 
 module.exports=router;

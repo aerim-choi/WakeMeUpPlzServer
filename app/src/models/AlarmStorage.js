@@ -44,10 +44,10 @@ class AlarmStorage {
 
     static async alarmUpdate(alarmInfo){
         return new Promise((resolve,reject)=>{
-            const query = "UPDATE alarms SET alarmNum=?,title=?, helper=?,dorN=?,isActivated=?,isHelperActivated=?,ringTone=?,alarmTime=?,id=?,dates=?) ;" ;
+            const query = "UPDATE alarms SET alarmNum=?,title=?, helper=?,dorN=?,isActivated=?,isHelperActivated=?,ringTone=?,alarmTime=?,id=?,dates=? where id=? and alarmNum=?;" ;
             
             db.query(query,
-                [alarmInfo.alarmNum,alarmInfo.title,alarmInfo.helper,alarmInfo.dorN,alarmInfo.isActivated,alarmInfo.isHelperActivated,alarmInfo.ringTone,alarmInfo.alarmTime,alarmInfo.id,alarmInfo.dates],
+                [alarmInfo.alarmNum,alarmInfo.title,alarmInfo.helper,alarmInfo.dorN,alarmInfo.isActivated,alarmInfo.isHelperActivated,alarmInfo.ringTone,alarmInfo.alarmTime,alarmInfo.id,alarmInfo.dates,alarmInfo.id,alarmInfo.alarmNum],
                 (err)=>{
                 if(err)reject(`${err}`);
                 resolve({sucess:true});
@@ -61,7 +61,7 @@ class AlarmStorage {
             const query = "DELETE FROM alarms where id=? and alarmNum=?;" ;
             
             db.query(query,
-                [alarmInfo.alarmNum,alarmInfo.id],
+                [alarmInfo.id,alarmInfo.alarmNum],
                 (err)=>{
                 if(err)reject(`${err}`);
                 resolve({sucess:true});
