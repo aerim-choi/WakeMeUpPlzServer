@@ -21,7 +21,7 @@ class Alarm{
                     if(fields.length>0){
                         return {success : true,result:fields };
                     }else{
-                        return {success:true, msg:"추가한 알람이 없습니다."};  
+                        return {success:true, result:fields,msg:"추가한 알람이 없습니다."};  
                     }    
                 }
             return {success:false,msg:"존재하지 않는 아이디입니다."};
