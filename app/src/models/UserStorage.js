@@ -24,7 +24,7 @@ class UserStorage {
                 [userInfo.id,userInfo.name,userInfo.psword],
                 (err)=>{
                 if(err)reject(`${err}`);
-                resolve ({sucess:true});
+                resolve ({success:true});
             });
         });
     }
