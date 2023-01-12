@@ -12,7 +12,7 @@ const printLogFormat =  {
         timestamp({
             format:"YYYY-MM-DD HH:mm:dd"
         }),
-        printFormat //출력포맷
+        printFormat //출력포맷x
     ),
     console:combine(
         colorize(),
@@ -44,6 +44,10 @@ const logger = createLogger({
 
 if(process.env.NODE_ENV!=="production"){
     logger.add(opts.console);
+}
+
+logger.stream={
+    write:(message)=>logger.info(message),
 }
 
 module.exports=logger;
