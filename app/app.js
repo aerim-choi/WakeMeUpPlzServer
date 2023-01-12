@@ -14,8 +14,6 @@ const accessLogStream=require("./src/config/log");
 // 라우팅
 const home = require("./src/routes/home");
 
-const logger = require("./src/config/logger");
-logger.error("Hello 구독자님들");
 // 앱 셋팅
 app.set("views","./src/views");
 app.set("view engine","ejs");
