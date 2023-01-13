@@ -36,7 +36,7 @@ class AlarmStorage {
                 [alarmInfo.alarmNum,alarmInfo.title,alarmInfo.helper,alarmInfo.dorN,alarmInfo.isActivated,alarmInfo.isHelperActivated,alarmInfo.ringTone,alarmInfo.alarmTime,alarmInfo.id,alarmInfo.dates],
                 (err)=>{
                 if(err)reject(`${err}`);
-                resolve({sucess:true});
+                resolve({success:true});
             });
             
         });
@@ -50,7 +50,7 @@ class AlarmStorage {
                 [alarmInfo.alarmNum,alarmInfo.title,alarmInfo.helper,alarmInfo.dorN,alarmInfo.isActivated,alarmInfo.isHelperActivated,alarmInfo.ringTone,alarmInfo.alarmTime,alarmInfo.id,alarmInfo.dates,alarmInfo.id,alarmInfo.alarmNum],
                 (err)=>{
                 if(err)reject(`${err}`);
-                resolve({sucess:true});
+                resolve({success:true});
             });
             
         });
@@ -64,7 +64,7 @@ class AlarmStorage {
                 [alarmInfo.id,alarmInfo.alarmNum],
                 (err)=>{
                 if(err)reject(`${err}`);
-                resolve({sucess:true});
+                resolve({success:true});
             });
             
         });

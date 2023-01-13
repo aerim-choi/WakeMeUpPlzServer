@@ -12,19 +12,22 @@ class Alarm{
 
     async getAlarm(){
         const client =this.body
+        const {id}= await UserStorage.getUserInfo(client.id);
         try{
-            if(await UserStorage.getUserInfo(client.id)){
-                const fields=  await AlarmStorage.getAlarmInfo(client.id);     
-                const id=fields[0].id;
+            if(id){
+                const fields=  await AlarmStorage.getAlarmInfo(client.id);   
+                
                 if(id===client.id){
-                    return {success : true,result:fields };
-                }else{
-                    return {success:true,msg:"추가한 알람이 없습니다."};  
-                }    
-            }
+                    if(fields.length>0){
+                        return {success : true,result:fields };
+                    }else{
+                        return {success:true, result:fields,msg:"추가한 알람이 없습니다."};  
+                    }    
+                }
             return {success:false,msg:"존재하지 않는 아이디입니다."};
+            }ㅊ
         }catch(err){
-            return {success:false,msg:"추가한 알람이 없습니다."};
+            return {success:false,msg:`${err}`};
         }
     }
     async addAlarm(){
