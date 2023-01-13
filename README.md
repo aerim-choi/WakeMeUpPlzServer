@@ -106,7 +106,8 @@
 
 ## 🍀실행영상 
 
-![20230113094941-7c011ad592 gif-2-mp4 com](https://user-images.githubusercontent.com/80438964/212255883-b0685c95-7f8f-4736-a2ee-1dc49a7505d2.gif)
+![합친 영상(2배속) (1)](https://user-images.githubusercontent.com/80438964/212256763-0e586119-57e6-49aa-ab53-9c791e9383fd.gif)
+
 
 
 
