@@ -100,7 +100,7 @@
 
 ![WakeMeUpPlz서버파트pdf_page-0012](https://user-images.githubusercontent.com/80438964/212251884-e8e3f3a5-7702-48b9-bbab-92da4d18af37.jpg)
 
-- 만든 api를 안드로이드 개발 팀원들이 사용하기 위해서는 서버를 배포해주어야 했기 때문에 AWS의 EC2를 이용하여 서버를 배포해주었습니다.
+- 만든 api를 안드로이드 개발 팀원들이 사용하기 위해서는 서버를 배포해주어야 했기 때문에 AWS의 EC2를 이용하여 서버를 배포하였습니다.
 
 
 
